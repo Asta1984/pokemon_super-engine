@@ -11,6 +11,8 @@ interface Pokemon {
 interface PokemonState {
   generation: number;
   pokemons: string[];
+  loading: boolean;
+  error: string | null;
   fetchPokemons: (gen: number) => Promise<void>;
 }
 
@@ -18,15 +20,22 @@ interface PokemonState {
 const usePokemonStore = create<PokemonState>((set) => ({
   generation: 1,
   pokemons: [],
+  loading: false,
+  error: null,
   fetchPokemons: async (gen: number) => {
+    set({ loading: true, error: null });
     try {
       const response = await axios.get<Pokemon[]>(
         `https://backend-poke-production.up.railway.app/generation/${gen}`
       );
       const names = response.data.map((pokemon) => pokemon.name);
-      set({ pokemons: names, generation: gen });
+      set({ pokemons: names, generation: gen, loading: false });
     } catch (error) {
       console.error(`Error fetching generation ${gen} pokemons:`, error);
+      set({ 
+        error: `Failed to fetch generation ${gen} Pokémon. Please try again.`, 
+        loading: false 
+      });
     }
   },
 }));
