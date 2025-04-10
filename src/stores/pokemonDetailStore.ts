@@ -66,8 +66,10 @@ const usePokemonDetailStore = create<PokemonDetailState>((set, get) => ({
         axios.get<PokemonDetail>(`https://backend-poke-production.up.railway.app/pokemon/${name}`)
       );
       
-      const responses = await Promise.all(promises);
-      const newDetails = responses.map((response) => response.data);
+      const results = await Promise.allSettled(promises);
+      const newDetails = results
+      .filter((result): result is PromiseFulfilledResult<any> => result.status === 'fulfilled')
+      .map((result) => result.value.data);
 
       // Update the store state by appending new details and moving the pointer forward
       set({
