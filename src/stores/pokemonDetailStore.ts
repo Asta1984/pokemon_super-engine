@@ -49,7 +49,7 @@ const usePokemonDetailStore = create<PokemonDetailState>((set, get) => ({
   currentIndex: 0,
   loading: false,
   error: null,
-  loadMore: async (pokemonNames: string[], limit = 10) => {
+  loadMore: async (pokemonNames: string[], limit = 20) => {
     const { currentIndex, details } = get();
     
     // If we have already loaded all names, do nothing

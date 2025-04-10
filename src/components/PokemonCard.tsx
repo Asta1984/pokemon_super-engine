@@ -29,11 +29,11 @@ export function PokemonCard({ detail }: PokemonCardProps) {
       <div className="space-y-2 text-gray-600">
         <div className="flex justify-between">
           <span className="font-medium">Height:</span>
-          <span>{detail.height}</span>
+          <span>{detail.height*10} cm</span>
         </div>
         <div className="flex justify-between">
           <span className="font-medium">Weight:</span>
-          <span>{detail.weight}</span>
+          <span>{detail.weight/10} Kg </span>
         </div>
         <div>
           <span className="font-medium">Abilities:</span>
