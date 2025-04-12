@@ -63,7 +63,7 @@ const usePokemonDetailStore = create<PokemonDetailState>((set, get) => ({
     try {
       // Fetch all details in parallel
       const promises = namesToLoad.map((name) =>
-        axios.get<PokemonDetail>(`https://backend-poke-production.up.railway.app/pokemon/${name}`)
+        axios.get<PokemonDetail>(`http://3.142.188.160:8000/pokemon/${name}`)
       );
       
       const results = await Promise.allSettled(promises);

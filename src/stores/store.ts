@@ -26,7 +26,7 @@ const usePokemonStore = create<PokemonState>((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get<Pokemon[]>(
-        `https://backend-poke-production.up.railway.app/generation/${gen}`
+        `http://3.142.188.160:8000/generation/${gen}`
       );
       const names = response.data.map((pokemon) => pokemon.name);
       set({ pokemons: names, generation: gen, loading: false });
