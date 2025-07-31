@@ -1,4 +1,5 @@
 import { PokemonDetail } from '../stores/pokemonDetailStore';
+import LoaderOne from './ui/loader-one';
 
 interface PokemonCardProps {
   detail: PokemonDetail;
@@ -10,6 +11,7 @@ export function PokemonCard({ detail }: PokemonCardProps) {
     detail.sprites.default;
 
   return (
+    
     <div className="bg-white rounded-lg shadow-md p-6 mb-4 transition-transform hover:scale-[1.02]">
       <h2 className="text-xl font-semibold text-gray-800 capitalize text-center mb-4">
         {detail.name}
