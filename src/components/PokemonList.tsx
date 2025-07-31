@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import usePokemonStore from '../stores/store';
 import usePokemonDetailStore from '../stores/pokemonDetailStore';
 import { PokemonCard } from './PokemonCard';
+import LoaderOne from './ui/loader-one';
 
 export default function PokemonList() {
   const { pokemons, generation } = usePokemonStore();
@@ -46,7 +47,7 @@ export default function PokemonList() {
       {loading && (
         <div className="flex justify-center py-6">
           <div className="animate-pulse text-gray-600">
-            Loading more Pokémon...
+            <LoaderOne />
           </div>
         </div>
       )}

@@ -1,5 +1,4 @@
 import { PokemonDetail } from '../stores/pokemonDetailStore';
-import LoaderOne from './ui/loader-one';
 
 interface PokemonCardProps {
   detail: PokemonDetail;
