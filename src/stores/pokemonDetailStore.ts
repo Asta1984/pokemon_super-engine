@@ -63,7 +63,7 @@ const usePokemonDetailStore = create<PokemonDetailState>((set, get) => ({
     try {
       // Fetch all details in parallel
       const promises = namesToLoad.map((name) =>
-        axios.get<PokemonDetail>(`https://3.142.188.160/pokemon/${name}`)
+        axios.get<PokemonDetail>(`https://sewantika.duckdns.org/pokemon/${name}`)
       );
       
       const results = await Promise.allSettled(promises);
