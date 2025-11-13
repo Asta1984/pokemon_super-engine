@@ -26,7 +26,7 @@ const usePokemonStore = create<PokemonState>((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get<Pokemon[]>(
-        `https://sewantika.duckdns.org/generation/${gen}`
+        `https://backend-poke.onrender.com/generation/${gen}`
       );
       const names = response.data.map((pokemon) => pokemon.name);
       set({ pokemons: names, generation: gen, loading: false });
